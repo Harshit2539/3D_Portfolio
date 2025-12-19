@@ -1,0 +1,173 @@
+/* App-specific styles */
+#root {
+  min-height: 100vh;
+  width: 100%;
+  background: #0a0a0a;
+}
+
+/* Component-specific styles */
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  padding: 0 8px;
+  margin: 0 4px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+  border-radius: 8px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.hero-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-highlight:hover::before {
+  opacity: 1;
+}
+
+/* Animation classes */
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .hero-highlight {
+    padding: 0 4px;
+    margin: 0 2px;
+    font-size: 0.9em;
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* Hardware acceleration */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Particle optimizations */
+.particle {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Animation performance */
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-bounce {
+  animation: bounce 2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* Reduce motion for performance */
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .floating-element,
+  .animate-spin-slow,
+  .animate-bounce,
+  .animate-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Balanced performance mode */
+.particle,
+.floating-element,
+.hero-particle,
+.about-particle,
+.skill-particle,
+.experience-particle,
+.project-particle,
+.cert-particle {
+  display: none !important;
+}
+
+/* Ensure all headings are visible */
+h1, h2, h3, h4, h5, h6 {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Fix invisible animated text */
+.title-char,
+.hero-char,
+.summary-char {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Optimize animations */
+.optimized-animation {
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #ffffff;
+  }
+  
+  .gradient-text {
+    background: #ffffff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
