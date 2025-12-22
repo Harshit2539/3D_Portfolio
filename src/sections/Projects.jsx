@@ -286,7 +286,7 @@ export default function Projects() {
   }, []);
 
   // Filter categories (you can customize based on your projects)
-  const categories = ['all', 'full-stack', 'frontend', 'backend', 'ai/ml', 'mobile'];
+  const categories = ['all', 'full-stack', 'frontend', 'backend', 'ai/ml'];
 
   return (
     <section
@@ -474,9 +474,9 @@ export default function Projects() {
                   {/* Impact metrics */}
                   <div className="flex items-center gap-4">
                     {[
-                      { icon: '👥', value: '10K+', label: 'Users' },
-                      { icon: '⚡', value: '99%', label: 'Uptime' },
-                      { icon: '🏆', value: '4.9', label: 'Rating' }
+                      { icon: '👥', value: '5K+', label: 'Users' },
+                      { icon: '⚡', value: '96%', label: 'Uptime' },
+                      { icon: '🏆', value: '4.7', label: 'Rating' }
                     ].map((metric, idx) => (
                       <div key={idx} className="text-center">
                         <div className="flex items-center gap-1">
@@ -521,8 +521,8 @@ export default function Projects() {
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { value: projects.length, label: 'Total Projects', icon: '📊', color: 'from-blue-500 to-cyan-500' },
-            { value: '100K+', label: 'Lines of Code', icon: '💻', color: 'from-purple-500 to-pink-500' },
-            { value: '50+', label: 'Technologies Used', icon: '🔧', color: 'from-green-500 to-emerald-500' },
+            { value: '50K+', label: 'Lines of Code', icon: '💻', color: 'from-purple-500 to-pink-500' },
+            { value: '25+', label: 'Technologies Used', icon: '🔧', color: 'from-green-500 to-emerald-500' },
             { value: '∞', label: 'Passion Level', icon: '🔥', color: 'from-orange-500 to-red-500' }
           ].map((stat, index) => (
             <div key={index} className="relative group">
@@ -563,14 +563,20 @@ export default function Projects() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="relative group/cta">
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="relative group/cta"
+                >
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-0 group-hover/cta:opacity-50 transition-opacity duration-300" />
                   <div className="relative px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-lg group-hover/cta:scale-105 transition-transform duration-300">
                     Start a Project
                   </div>
                 </button>
                 
-                <button className="relative group/cta">
+                <button 
+                  onClick={() => window.open('https://github.com/Harshit2539', '_blank')}
+                  className="relative group/cta"
+                >
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-0 group-hover/cta:opacity-30 transition-opacity duration-300" />
                   <div className="relative px-8 py-4 rounded-2xl bg-gray-900/50 backdrop-blur-sm border border-white/10 text-white font-semibold text-lg group-hover/cta:border-primary/50 transition-all duration-300">
                     View All Projects

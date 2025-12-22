@@ -402,7 +402,7 @@ export default function Contact() {
           <div className="max-w-3xl mx-auto">
             <p className="text-xl text-gray-400">
               Ready to bring your next big idea to life? I've successfully delivered
-              <span className="text-primary font-semibold mx-2">{totalProjects}+ projects</span>
+              <span className="text-primary font-semibold mx-2">10+ projects</span>
               and I'm excited to collaborate on your next venture
             </p>
           </div>
@@ -502,19 +502,22 @@ export default function Contact() {
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                      {totalProjects}
+                      {/* {totalProjects} */}
+                      50+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Total</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
-                      {completedProjects}
+                      {/* {completedProjects} */}
+                      40+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Completed</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                      {liveProjects}
+                      {/* {liveProjects} */}
+                      30+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Live</div>
                   </div>
@@ -683,7 +686,10 @@ export default function Contact() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="relative group/cta">
+                <button 
+                  onClick={() => alert('Please fill out the contact form above to get in touch with me!')}
+                  className="relative group/cta"
+                >
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-0 group-hover/cta:opacity-50 transition-opacity duration-300" />
                   <div className="relative px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-lg group-hover/cta:scale-105 transition-transform duration-300">
                     Schedule a Call

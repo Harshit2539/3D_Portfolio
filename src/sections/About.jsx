@@ -231,7 +231,7 @@ export default function About() {
               <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-30 group-hover:opacity-70 transition-opacity duration-500" />
               <div className="relative px-6 py-3 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10">
                 <span className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Full Stack Expert
+                  Full Stack Dev
                 </span>
                 <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full animate-ping" />
               </div>
@@ -292,12 +292,12 @@ export default function About() {
                   <p className="text-gray-300 leading-relaxed">
                     At <span className="text-primary font-semibold">Redian Software Global</span>, 
                     I specialize in building full-stack SaaS products, AI-powered platforms, 
-                    and performance-driven backend systems that scale to millions of users.
+                    and performance-driven backend systems that scale to thousands of users.
                   </p>
                   
                   {/* Tech stack indicators */}
                   <div className="flex gap-2 mt-6">
-                    {['MERN', 'Node.js', 'React', 'AWS'].map((tech, i) => (
+                    {[ 'PHP', 'MERN', 'Python', 'AI', 'SQL'].map((tech, i) => (
                       <span
                         key={tech}
                         className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary"
@@ -317,8 +317,8 @@ export default function About() {
             {/* Key Stats Cards */}
             <div className="about-cards-container grid grid-cols-2 gap-6">
               {[
-                { value: '5+', label: 'Years Experience', icon: '⏳', color: 'from-blue-500 to-cyan-500' },
-                { value: '50+', label: 'Projects Delivered', icon: '🚀', color: 'from-purple-500 to-pink-500' },
+                { value: '1+', label: 'Years Experience', icon: '⏳', color: 'from-blue-500 to-cyan-500' },
+                { value: '10+', label: 'Projects Delivered', icon: '🚀', color: 'from-purple-500 to-pink-500' },
                 { value: '100%', label: 'Client Satisfaction', icon: '⭐', color: 'from-yellow-500 to-orange-500' },
                 { value: '∞', label: 'Passion for Code', icon: '❤️', color: 'from-red-500 to-pink-500' }
               ].map((stat, index) => (
@@ -364,9 +364,10 @@ export default function About() {
               
               <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
                 {[
+                  'C', 'Java', 'JavaScript', 'SQL',
+                  'Python', 'PHP', 'Laravel', 'Prompt AI',
                   'React', 'Node.js', 'MongoDB', 'Express', 
-                  'TypeScript', 'AWS', 'Docker', 'GraphQL',
-                  'Redis', 'Next.js', 'PostgreSQL', 'Firebase'
+                  'LLM', 'Model Integration', 'Model Training', 'APIs'
                 ].map((tech, index) => (
                   <div
                     key={tech}
@@ -422,11 +423,12 @@ export default function About() {
               Want to build something incredible together?
             </span>
             <div className="relative">
-              <span className="text-primary font-bold">Let's Talk</span>
+              <span className="text-primary font-bold">Let's Do it</span>
               <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-500" />
             </div>
             <div className="text-2xl group-hover:translate-x-2 transition-transform duration-300">
               →
+              {/* 💡 */}
             </div>
           </div>
         </div>

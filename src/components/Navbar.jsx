@@ -51,26 +51,73 @@ export default function Navbar() {
     
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Simple intersection observer for active sections
+    // Improved intersection observer for active sections
     const observer = new IntersectionObserver(
       (entries) => {
+        // Find the entry with the largest intersection ratio
+        let maxRatio = 0;
+        let activeEntry = null;
+        
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            activeEntry = entry;
           }
         });
+        
+        // Update active section if we have a valid entry
+        if (activeEntry && activeEntry.intersectionRatio > 0.1) {
+          setActiveSection(activeEntry.target.id);
+        }
       },
-      { threshold: 0.5, rootMargin: '-20% 0px -20% 0px' }
+      { 
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+        rootMargin: '-10% 0px -10% 0px'
+      }
     );
     
+    // Observe all sections
     navItems.forEach((item) => {
       const element = document.getElementById(item.href.substring(1));
       if (element) observer.observe(element);
+    });
+    
+    // Handle smooth scroll clicks
+    const handleNavClick = (e) => {
+      const href = e.target.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // Immediately update active section
+          setActiveSection(targetId);
+          
+          // Smooth scroll to target
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    };
+    
+    // Add click listeners to nav items
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach(link => {
+      link.addEventListener('click', handleNavClick);
     });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
+      
+      // Clean up nav click listeners
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      navLinks.forEach(link => {
+        link.removeEventListener('click', handleNavClick);
+      });
     };
   }, []);
 

@@ -380,7 +380,7 @@ export default function Skills() {
         </div>
         
         {/* Skill Level Legend */}
-        <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10">
+        {/* <div className="mt-16 p-8 rounded-2xl bg-gradient-to-r from-gray-900/50 to-black/50 backdrop-blur-sm border border-white/10">
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl font-bold text-white">Proficiency Levels</h3>
             <div className="text-primary text-sm font-semibold flex items-center gap-2">
@@ -407,7 +407,7 @@ export default function Skills() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         
         {/* Continuous Learning Section */}
         <div className="mt-16 relative group">
@@ -435,8 +435,8 @@ export default function Skills() {
               {[
                 { tech: 'AI/ML', progress: 65 },
                 { tech: 'Web3', progress: 50 },
-                { tech: 'Rust', progress: 40 },
-                { tech: 'Go', progress: 35 }
+                { tech: 'DevOps', progress: 40 },
+                { tech: 'SEO', progress: 35 }
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between text-sm">

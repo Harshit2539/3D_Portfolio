@@ -48,9 +48,9 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto py-8 sm:py-12 hero-content">
         {/* Animated badge */}
-        <div className="inline-block mb-4 sm:mb-8 relative group z-50" style={{ opacity: 1, visibility: 'visible' }}>
+        <div className="inline-block mb-2 sm:mb-4 md:mb-6 lg:mb-8 relative group z-50 hero-badge" style={{ opacity: 1, visibility: 'visible', position: 'relative', zIndex: 9999 }}>
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-30 group-hover:opacity-70 transition-opacity duration-500" />
           <div className="relative px-6 py-2 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10">
             <span className="text-sm font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -63,7 +63,7 @@ export default function Hero() {
         {/* Main title with holographic effect */}
         <h1 
           ref={titleRef}
-          className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-bold mb-4 sm:mb-6 relative"
+          className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold mb-2 sm:mb-4 md:mb-6 relative"
           style={{
             '--glow-x': '0px',
             '--glow-y': '0px',
@@ -115,7 +115,7 @@ export default function Hero() {
         {/* Subtitle with advanced typography */}
         <p 
           ref={subtitleRef}
-          className="hero-subtitle mt-4 sm:mt-6 md:mt-8 text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto px-4 relative"
+          className="hero-subtitle mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-3xl mx-auto px-4 relative"
           style={{
             opacity: 1,
             visibility: 'visible',
@@ -123,24 +123,27 @@ export default function Hero() {
           }}
         >
           <span className="relative">
-            I build 
+            I deliver 
             <span className="inline-block mx-2 px-3 py-1 rounded-lg bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold">
                 scalable
               </span>
             </span>
-            high-performance web applications with 
-            <span className="hero-highlight"> clean architecture </span>
-            and 
-            <span className="hero-highlight"> cutting-edge UI/UX </span>
-            experiences.
+            software systems that handle  
+            <span className="hero-highlight"> real-world traffic, </span>
+           
+            <span className="hero-highlight"> improve performance, and </span>
+            drive measurable business outcomes.
           </span>
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-6 sm:mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center" style={{ opacity: 1, visibility: 'visible' }}>
+        <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center hero-buttons" style={{ opacity: 1, visibility: 'visible' }}>
           {/* Primary button with magnetic effect */}
-          <button className="group relative px-8 py-4 rounded-2xl overflow-hidden">
+          <button 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group relative px-8 py-4 rounded-2xl overflow-hidden"
+          >
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="absolute inset-0 bg-gray-900 border border-white/10 rounded-2xl" />
             <span className="relative text-lg font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent group-hover:text-white transition-all duration-300">
@@ -150,7 +153,10 @@ export default function Hero() {
           </button>
 
           {/* Secondary button with glass morphism */}
-          <button className="group relative px-8 py-4 rounded-2xl backdrop-blur-sm border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300">
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="group relative px-8 py-4 rounded-2xl backdrop-blur-sm border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300"
+          >
             <span className="text-lg font-semibold text-white">
               Let's Connect
             </span>
@@ -159,10 +165,10 @@ export default function Hero() {
         </div>
 
         {/* Stats */}
-        <div className="mt-8 sm:mt-12 md:mt-16 grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-2xl mx-auto" style={{ opacity: 1, visibility: 'visible' }}>
+        <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16 grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 max-w-2xl mx-auto hero-stats" style={{ opacity: 1, visibility: 'visible' }}>
           {[
-            { value: '50+', label: 'Projects', emoji: '🚀' },
-            { value: '5+', label: 'Years Exp', emoji: '💼' },
+            { value: '10+', label: 'Projects', emoji: '🚀' },
+            { value: '1+', label: 'Years Exp', emoji: '💼' },
             { value: '100%', label: 'Satisfaction', emoji: '⭐' }
           ].map((stat, i) => (
             <div
@@ -181,16 +187,6 @@ export default function Hero() {
               </div>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator z-50" style={{ opacity: 1, visibility: 'visible' }}>
-        <div className="flex flex-col items-center">
-          <span className="text-xs sm:text-sm text-gray-400 mb-2">Scroll to explore</span>
-          <div className="w-5 sm:w-6 h-8 sm:h-10 border-2 border-primary/30 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 sm:h-3 bg-gradient-to-b from-primary to-secondary rounded-full animate-bounce" />
-          </div>
         </div>
       </div>
 

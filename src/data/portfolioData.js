@@ -20,7 +20,7 @@ export const experience = [
       "Built and maintained scalable web applications using PHP and Laravel with optimized database structures.",
       "Worked on AI-driven construction platforms including automated take-off systems and AI-powered tender prediction solutions.",
       "Integrated Python-based AI models, prompt engineering workflows, and full SaaS architecture with user management.",
-      "Hands-on experience with React.js, Node.js, Express.js, MongoDB, SQL, Python (AI/ML), Tailwind CSS, and Bootstrap.",
+      "Hands-on experience with React.js, Node.js, Express.js, MongoDB, SQL, Python (AI/ML), PHP, Laravel, Model Training & Integration.",
     ],
   },
   {
@@ -31,6 +31,7 @@ export const experience = [
     points: [
       "Worked extensively with SQL, SAP Business One, and HANA SQL for enterprise data handling.",
       "Developed reports using Crystal Reports for business insights and analytics.",
+      "Worked on backend data management and optimization tasks with full scale DBA tasks.",
       "Hands-on exposure to enterprise-grade database systems and reporting workflows.",
     ],
   },
@@ -70,6 +71,16 @@ export const projects = [
       "Clean UI with role-based access and secure backend architecture.",
     ],
   },
+  {
+  title: "BSES CleanUp Management System",
+  stack: "PHP, Laravel, JavaScript, SQL, Vue.js, Bootstrap, AJAX",
+  description:
+    "Internal platform for tracking, managing, and closing long-pending consumer complaints and service requests, improving field operations and service efficiency with real-time reporting and SLA enforcement.",
+  highlights: [
+    "Complaint and service request lifecycle management with SLA tracking.",
+    "Real-time reporting dashboard to streamline field operations."
+  ],
+},
 ];
 
 export const skills = {
@@ -101,6 +112,11 @@ export const skills = {
     "SAP Business One",
     "Crystal Reports",
     "WordPress",
+    "Labelme",
+    "Postman",
+    "Netlify",
+    "Figma",
+    "VS code",
   ],
   concepts: [
     "REST APIs",
@@ -113,24 +129,29 @@ export const skills = {
   ],
 };
 
-
 export const certificates = [
   {
-    title: "Full Stack Web Development (MERN)",
-    issuer: "Professional Training Program",
+    title: "Version Control",
+    issuer: "Meta (Coursera)",
     description:
-      "Comprehensive training covering React.js, Node.js, Express.js, MongoDB, REST APIs, and full-stack project development.",
+      "Hands-on certification covering Git, GitHub workflows, branching strategies, pull requests, and collaborative version control practices used in production teams.",
   },
   {
-    title: "SQL & Database Management",
-    issuer: "Industry Certification",
+    title: "Java (4★ Coder)",
+    issuer: "HackerRank",
     description:
-      "Advanced SQL querying, database design, normalization, and enterprise-level data handling.",
+      "Demonstrates strong proficiency in Java fundamentals, object-oriented programming, problem-solving, and algorithmic thinking through competitive assessments.",
   },
   {
-    title: "SAP Business One & HANA SQL",
-    issuer: "Enterprise Systems Training",
+    title: "Google Cloud Computing Foundations",
+    issuer: "Google Cloud",
     description:
-      "Hands-on experience with SAP Business One, HANA SQL, and Crystal Reports for business analytics.",
+      "Covers core cloud concepts including compute, storage, networking, security, and cloud-native application fundamentals on Google Cloud Platform.",
+  },
+  {
+    title: "AWS Cloud Practitioner – Foundations",
+    issuer: "Amazon Web Services (AWS)",
+    description:
+      "Validates foundational knowledge of AWS cloud services, architecture, security, pricing models, and best practices for cloud-native systems.",
   },
 ];

@@ -470,7 +470,7 @@ export default function Experience() {
                       <div className="mt-8 pt-6 border-t border-white/10">
                         <div className="flex flex-wrap gap-2">
                           {/* Sample tech stack - you can replace with actual data */}
-                          {['React', 'Node.js', 'AWS', 'MongoDB', 'TypeScript'].map((tech, idx) => (
+                          {['React', 'Node.js', 'MongoDB', 'SQL', 'PHP', 'AI-Integration'].map((tech, idx) => (
                             <span
                               key={idx}
                               className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-primary"
@@ -521,7 +521,7 @@ export default function Experience() {
               <div className="text-center">
                 <div className="text-4xl mb-4">💡</div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
-                  50+
+                  10+
                 </div>
                 <div className="text-gray-400 mt-2">Projects Delivered</div>
               </div>
@@ -549,7 +549,7 @@ export default function Experience() {
               
               <button className="relative px-12 py-5 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group-hover:border-primary/50 transition-all duration-300">
                 <span className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                  Let's Work Together
+                  Let's Work Together ..
                 </span>
                 
                 {/* Animated arrow */}

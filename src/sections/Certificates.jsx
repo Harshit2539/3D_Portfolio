@@ -103,7 +103,7 @@ export default function Certificates() {
     );
 
     // Certificate cards animation
-    gsap.from(certsRef.current, {
+    gsap.from(certsRef.current.filter(Boolean), {
       scrollTrigger: {
         trigger: certsRef.current[0],
         start: "top 85%",
@@ -120,8 +120,9 @@ export default function Certificates() {
       ease: "power3.out"
     });
 
-    // Interactive hover effects
-    certsRef.current.forEach((cert, index) => {
+    // Interactive hover effects for all certificates
+    certificates.forEach((_, index) => {
+      const cert = certsRef.current[index];
       if (!cert) return;
       
       cert.addEventListener('mouseenter', () => {
@@ -498,7 +499,7 @@ export default function Certificates() {
                     
                     {/* Credential ID */}
                     <div className="text-xs text-gray-500 font-mono">
-                      ID: {cert.credentialId || `CERT-${String(index + 1).padStart(3, '0')}`}
+                      ID: {cert.credentialId || `CERT-${String(index + 1).padStart(4, '0')}`}
                     </div>
                   </div>
                   
@@ -511,7 +512,10 @@ export default function Certificates() {
                       </div>
                     </button>
                     
-                    <button className="relative group/btn">
+                    <button 
+                      onClick={() => window.open('https://linkedin.com/in/harshtyagi25', '_blank')}
+                      className="relative group/btn"
+                    >
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-0 group-hover/btn:opacity-50 transition-opacity duration-300" />
                       <div className="relative px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-white/10 text-xs font-medium text-white group-hover/btn:border-primary/50 transition-all duration-300">
                         View Certificate
@@ -577,9 +581,9 @@ export default function Certificates() {
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { cert: 'AWS Solutions Architect', progress: 75 },
-                { cert: 'TensorFlow Developer', progress: 60 },
-                { cert: 'Kubernetes Administrator', progress: 45 },
-                { cert: 'React Native Expert', progress: 55 }
+                { cert: 'LLM Models', progress: 60 },
+                { cert: 'Database Administrator', progress: 45 },
+                { cert: 'React Expert', progress: 55 }
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between text-sm">
@@ -620,14 +624,20 @@ export default function Certificates() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <button className="relative group/cta">
+                <button 
+                  onClick={() => window.open('https://linkedin.com/in/harshtyagi25', '_blank')}
+                  className="relative group/cta"
+                >
                   <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl blur opacity-0 group-hover/cta:opacity-50 transition-opacity duration-300" />
                   <div className="relative px-8 py-4 rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-500 text-black font-semibold text-lg group-hover/cta:scale-105 transition-transform duration-300">
                     Download All Credentials
                   </div>
                 </button>
                 
-                <button className="relative group/cta">
+                <button 
+                  onClick={() => window.open('https://linkedin.com/in/harshtyagi25', '_blank')}
+                  className="relative group/cta"
+                >
                   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-0 group-hover/cta:opacity-30 transition-opacity duration-300" />
                   <div className="relative px-8 py-4 rounded-2xl bg-gray-900/50 backdrop-blur-sm border border-white/10 text-white font-semibold text-lg group-hover/cta:border-primary/50 transition-all duration-300">
                     View LinkedIn Certifications
