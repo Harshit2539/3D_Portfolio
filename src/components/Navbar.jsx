@@ -14,21 +14,16 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [scrolled, setScrolled] = useState(false);
 
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const itemsRef = useRef([]);
 
-
-  // Removed custom cursor for better performance
-
-  /* =========================
-     Initial Animations
-  ========================== */
   useEffect(() => {
     if (!navRef.current) return;
 
-    // Simple initial animations without complex GSAP context
+    // Initial animations
     gsap.fromTo(logoRef.current, 
       { y: -20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }
@@ -39,22 +34,17 @@ export default function Navbar() {
       { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.3, ease: "power2.out" }
     );
 
-    // Simple scroll listener instead of ScrollTrigger
+    // Enhanced scroll listener
     const handleScroll = () => {
-      if (navRef.current) {
-        const scrolled = window.scrollY > 50;
-        navRef.current.style.backgroundColor = scrolled 
-          ? 'rgba(10,10,20,0.95)' 
-          : 'rgba(10,10,20,0.7)';
-      }
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Improved intersection observer for active sections
+    // Intersection observer for active sections
     const observer = new IntersectionObserver(
       (entries) => {
-        // Find the entry with the largest intersection ratio
         let maxRatio = 0;
         let activeEntry = null;
         
@@ -65,7 +55,6 @@ export default function Navbar() {
           }
         });
         
-        // Update active section if we have a valid entry
         if (activeEntry && activeEntry.intersectionRatio > 0.1) {
           setActiveSection(activeEntry.target.id);
         }
@@ -91,10 +80,9 @@ export default function Navbar() {
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
-          // Immediately update active section
           setActiveSection(targetId);
+          setIsOpen(false); // Close mobile menu
           
-          // Smooth scroll to target
           targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
@@ -113,7 +101,6 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
       
-      // Clean up nav click listeners
       const navLinks = document.querySelectorAll('nav a[href^="#"]');
       navLinks.forEach(link => {
         link.removeEventListener('click', handleNavClick);
@@ -121,52 +108,37 @@ export default function Navbar() {
     };
   }, []);
 
-  /* =========================
-     Mobile Menu
-  ========================== */
   const toggleMenu = () => {
-    const newState = !isOpen;
-    setIsOpen(newState);
-
-    const overlay = document.querySelector(".mobile-menu-overlay");
-    if (overlay) {
-      gsap.to(overlay, {
-        clipPath: newState
-          ? "circle(150% at 90% 40px)"
-          : "circle(0% at 90% 40px)",
-        duration: 0.5,
-        ease: "power2.inOut",
-      });
-    }
+    setIsOpen(!isOpen);
   };
 
   return (
     <>
-
-
       <nav
         ref={navRef}
-        className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/10"
-        style={{
-          background: "rgba(10,10,20,0.9)",
-          backdropFilter: "blur(10px)",
-          WebkitBackdropFilter: "blur(10px)",
-          minHeight: "80px",
-        }}
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+          scrolled 
+            ? 'bg-black/90 backdrop-blur-xl border-b border-primary/30 shadow-2xl shadow-primary/10' 
+            : 'bg-black/70 backdrop-blur-lg border-b border-white/10'
+        }`}
       >
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex h-20 items-center justify-between relative z-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 sm:h-18 md:h-20 items-center justify-between">
+            
             {/* Logo */}
-            <div ref={logoRef} className="relative">
-              <h1 className="text-3xl font-bold">
-                <span className="animate-gradient-x bg-gradient-to-r from-primary via-white to-secondary bg-clip-text text-transparent">
-                  Harsh Tyagi
-                </span>
-              </h1>
+            <div ref={logoRef} className="relative flex-shrink-0 z-50">
+              <div className="relative group">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <h1 className="relative text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold px-2 py-1">
+                  <span className="bg-gradient-to-r from-primary via-white to-secondary bg-clip-text text-transparent animate-gradient-x">
+                    Harsh Tyagi
+                  </span>
+                </h1>
+              </div>
             </div>
 
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex gap-2">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
               {navItems.map((item, i) => {
                 const active = activeSection === item.href.substring(1);
                 return (
@@ -176,71 +148,103 @@ export default function Navbar() {
                       if (el) itemsRef.current[i] = el;
                     }}
                     href={item.href}
-                    className={`relative rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                        active
-                          ? "bg-primary/20 text-white border border-primary/50"
-                          : "text-gray-300 hover:text-white hover:bg-white/5"
-                      }
-                    `}
-                    style={{
-                      minWidth: '80px',
-                      textAlign: 'center',
-                      display: 'block',
-                      visibility: 'visible',
-                      opacity: 1,
-                      zIndex: 100
-                    }}
+                    className={`relative group px-3 lg:px-4 py-2 rounded-xl text-sm lg:text-base font-medium transition-all duration-300 ${
+                      active
+                        ? "text-white"
+                        : "text-gray-300 hover:text-white"
+                    }`}
                   >
-                    {item.name}
+                    {/* Active background */}
+                    {active && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-xl border border-primary/50" />
+                    )}
+                    
+                    {/* Hover background */}
+                    <div className="absolute inset-0 bg-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Text */}
+                    <span className="relative z-10">{item.name}</span>
+                    
+                    {/* Active indicator */}
+                    {active && (
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                    )}
                   </a>
                 );
               })}
             </div>
 
-            {/* Mobile Button */}
+            {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden relative h-12 w-12"
+              className="md:hidden relative z-50 p-2 rounded-xl bg-gray-800/80 border border-white/20 backdrop-blur-sm"
             >
-              <span
-                className={`absolute h-0.5 w-6 bg-white transition ${
-                  isOpen ? "rotate-45" : "-translate-y-2"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-6 bg-white transition ${
-                  isOpen ? "opacity-0" : "opacity-100"
-                }`}
-              />
-              <span
-                className={`absolute h-0.5 w-6 bg-white transition ${
-                  isOpen ? "-rotate-45" : "translate-y-2"
-                }`}
-              />
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span
+                  className={`block h-0.5 w-5 bg-white transition-all duration-300 ${
+                    isOpen ? "rotate-45 translate-y-0" : "-translate-y-1.5"
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-5 bg-white transition-all duration-300 ${
+                    isOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 w-5 bg-white transition-all duration-300 ${
+                    isOpen ? "-rotate-45 -translate-y-0" : "translate-y-1.5"
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className="mobile-menu-overlay fixed inset-0 z-40 lg:hidden"
-          style={{
-            clipPath: "circle(0% at 90% 40px)",
-            background:
-              "radial-gradient(circle at top right, rgba(20,20,40,.98), rgba(10,10,20,.95))",
-          }}
+          className={`md:hidden fixed inset-0 z-40 ${
+            isOpen ? "block" : "hidden"
+          }`}
         >
-          <div className="flex h-full flex-col items-center justify-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={toggleMenu}
-                className="text-4xl font-bold text-white/80 hover:text-white transition-colors duration-300"
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/95"
+            onClick={toggleMenu}
+          />
+          
+          {/* Menu Content */}
+          <div className="relative h-full flex flex-col justify-center items-center px-6">
+            <div className="w-full max-w-sm space-y-4">
+              {navItems.map((item, index) => {
+                const active = activeSection === item.href.substring(1);
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={`block w-full text-center py-4 px-6 rounded-xl text-xl font-bold transition-all duration-300 ${
+                      active
+                        ? "bg-primary text-white shadow-lg"
+                        : "bg-gray-800 text-white hover:bg-gray-700"
+                    }`}
+                    style={{
+                      opacity: 1,
+                      visibility: 'visible',
+                      display: 'block',
+                      color: active ? '#ffffff' : '#ffffff',
+                      backgroundColor: active ? '#6366f1' : '#374151'
+                    }}
+                  >
+                    {item.name}
+                    {active && <span className="ml-2">●</span>}
+                  </a>
+                );
+              })}
+            </div>
+            
+            {/* Close hint */}
+            <div className="absolute bottom-8 text-white text-sm font-medium">
+              Tap anywhere to close
+            </div>
           </div>
         </div>
       </nav>

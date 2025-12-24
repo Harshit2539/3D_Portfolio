@@ -311,7 +311,7 @@ export default function Projects() {
         }} />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           {/* Animated floating orb */}
@@ -325,7 +325,7 @@ export default function Projects() {
           
           <h2 
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl md:text-7xl font-bold mb-6"
             style={{ opacity: 1, visibility: 'visible', display: 'block' }}
           >
             <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
@@ -373,7 +373,7 @@ export default function Projects() {
         </div>
         
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -518,7 +518,7 @@ export default function Projects() {
         </div>
         
         {/* Projects Stats */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
             { value: projects.length, label: 'Total Projects', icon: '📊', color: 'from-blue-500 to-cyan-500' },
             { value: '50K+', label: 'Lines of Code', icon: '💻', color: 'from-purple-500 to-pink-500' },
@@ -588,70 +588,7 @@ export default function Projects() {
         </div>
       </div>
       
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.6; }
-        }
-        
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        
-        .animate-pulse {
-          animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .animate-bounce {
-          animation: bounce 2s ease-in-out infinite;
-        }
-        
-        .animate-spin-slow {
-          animation: spin 20s linear infinite;
-        }
-        
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        /* Title character animation */
-        .project-title-char {
-          display: inline-block;
-          opacity: 0;
-          transform: translateY(50px) rotateX(-20deg);
-        }
-        
-        /* Particle styling */
-        .project-particle {
-          will-change: transform, opacity;
-        }
-        
-        /* Smooth hover transitions */
-        .tech-item, .highlight-item {
-          transition: all 0.3s ease;
-        }
-        
-        /* Project card depth effect */
-        .project-glow {
-          transition: opacity 0.5s ease;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-          .filter-tab {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-          }
-          
-          .project-preview {
-            width: 3rem;
-            height: 3rem;
-            font-size: 1.5rem;
-          }
-        }
-      `}</style>
+     
     </section>
   );
 }

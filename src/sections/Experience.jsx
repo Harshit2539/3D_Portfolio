@@ -318,7 +318,7 @@ export default function Experience() {
           
           <h2 
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold relative inline-block"
+            className="text-4xl md:text-7xl font-bold relative inline-block"
             style={{ opacity: 1, visibility: 'visible', display: 'block' }}
           >
             <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">

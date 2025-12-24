@@ -321,7 +321,7 @@ export default function Certificates() {
         }} />
       </div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           {/* Animated floating medal */}
@@ -335,12 +335,13 @@ export default function Certificates() {
           
           <h2 
             ref={titleRef}
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl md:text-7xl font-bold mb-6"
             style={{ opacity: 1, visibility: 'visible', display: 'block' }}
           >
             <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
               Professional
             </span>
+            <br className="block md:hidden" />
             <span className="ml-4 bg-gradient-to-r from-yellow-500 via-amber-500 to-orange-500 bg-clip-text text-transparent">
               Certifications
             </span>
@@ -383,7 +384,7 @@ export default function Certificates() {
         </div>
         
         {/* Certificates Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {certificates.map((cert, index) => (
             <div
               key={index}
