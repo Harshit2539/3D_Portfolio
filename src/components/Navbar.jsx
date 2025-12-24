@@ -73,7 +73,7 @@ export default function Navbar() {
     
     // Handle smooth scroll clicks
     const handleNavClick = (e) => {
-      const href = e.target.getAttribute('href');
+      const href = e.target.closest('a')?.getAttribute('href');
       if (href && href.startsWith('#')) {
         e.preventDefault();
         const targetId = href.substring(1);
@@ -81,12 +81,16 @@ export default function Navbar() {
         
         if (targetElement) {
           setActiveSection(targetId);
-          setIsOpen(false); // Close mobile menu
           
           targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
+          
+          // Auto-close mobile menu after 2 seconds
+          setTimeout(() => {
+            setIsOpen(false);
+          }, 2000);
         }
       }
     };
@@ -106,7 +110,7 @@ export default function Navbar() {
         link.removeEventListener('click', handleNavClick);
       });
     };
-  }, []);
+  }, [isOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -202,51 +206,96 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden fixed inset-0 z-40 ${
-            isOpen ? "block" : "hidden"
+          className={`md:hidden fixed top-16 right-0 z-40 transition-all duration-500 ${
+            isOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
         >
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/95"
-            onClick={toggleMenu}
-          />
-          
-          {/* Menu Content */}
-          <div className="relative h-full flex flex-col justify-center items-center px-6">
-            <div className="w-full max-w-sm space-y-4">
+          {/* Mobile Menu Dropdown with 3D Effects */}
+          <div className={`relative bg-black border-l border-b border-gray-800 shadow-2xl transition-all duration-500 transform origin-top-right perspective-1000 ${
+            isOpen ? "scale-100 translate-y-0 rotateX-0" : "scale-95 -translate-y-4 rotateX-12"
+          }`}
+          style={{
+            transformStyle: 'preserve-3d',
+            perspective: '1000px'
+          }}>
+            {/* Glowing border effect */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50 rounded-lg blur-sm opacity-30 animate-pulse" />
+            
+            {/* Glass morphism overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-sm rounded-lg" />
+            
+            <ul className="relative py-3 min-w-[220px] z-10">
               {navItems.map((item, index) => {
                 const active = activeSection === item.href.substring(1);
                 return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={`block w-full text-center py-4 px-6 rounded-xl text-xl font-bold transition-all duration-300 ${
-                      active
-                        ? "bg-primary text-white shadow-lg"
-                        : "bg-gray-800 text-white hover:bg-gray-700"
-                    }`}
-                    style={{
-                      opacity: 1,
-                      visibility: 'visible',
-                      display: 'block',
-                      color: active ? '#ffffff' : '#ffffff',
-                      backgroundColor: active ? '#6366f1' : '#374151'
-                    }}
-                  >
-                    {item.name}
-                    {active && <span className="ml-2">●</span>}
-                  </a>
+                  <li key={item.name} className="relative overflow-hidden">
+                    {/* Floating particle effect for active item */}
+                    {active && (
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-primary to-secondary rounded-r-full animate-pulse" />
+                    )}
+                    
+                    <a
+                      href={item.href}
+                      className={`relative block px-6 py-4 text-sm font-semibold transition-all duration-300 transform hover:scale-105 hover:translate-x-2 ${
+                        active
+                          ? "bg-gradient-to-r from-primary/20 to-secondary/10 text-white shadow-lg shadow-primary/20"
+                          : "text-white hover:bg-gradient-to-r hover:from-gray-800/50 hover:to-gray-900/50 hover:text-white"
+                      }`}
+                      style={{
+                        animationDelay: `${index * 0.08}s`,
+                        animation: isOpen ? 'slideInRight3D 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards' : 'none',
+                        transformStyle: 'preserve-3d'
+                      }}
+                    >
+                      {/* Hover glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded" />
+                      
+                      <span className="relative flex items-center justify-between z-10"
+                        style={{ color: '#ffffff', opacity: 1, visibility: 'visible' }}>
+                        <span className="flex items-center gap-3">
+                          {/* 3D Icon effect */}
+                          <span className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                            active 
+                              ? "bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/50 animate-bounce" 
+                              : "bg-gray-600 group-hover:bg-primary"
+                          }`} />
+                          
+                          <span className="relative" style={{ color: '#FFFFFF', fontSize: '16px', fontWeight: 'bold' }}>
+                            {item.name}
+                          </span>
+                        </span>
+                        
+                        {active && (
+                          <div className="flex items-center gap-1">
+                            <span className="w-1 h-1 bg-primary rounded-full animate-ping" />
+                            <span className="w-1 h-1 bg-secondary rounded-full animate-ping" style={{ animationDelay: '0.2s' }} />
+                            <span className="w-1 h-1 bg-primary rounded-full animate-ping" style={{ animationDelay: '0.4s' }} />
+                          </div>
+                        )}
+                      </span>
+                      
+                      {/* Ripple effect on hover */}
+                      <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 bg-primary/20 rounded-full hover:w-full hover:h-full transition-all duration-500" />
+                      </div>
+                    </a>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
             
-            {/* Close hint */}
-            <div className="absolute bottom-8 text-white text-sm font-medium">
-              Tap anywhere to close
-            </div>
+            {/* Bottom glow accent */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           </div>
         </div>
+
+        {/* Mobile Menu Backdrop */}
+        {isOpen && (
+          <div 
+            className="md:hidden fixed inset-0 z-30 bg-black/20"
+            onClick={toggleMenu}
+          />
+        )}
       </nav>
     </>
   );
