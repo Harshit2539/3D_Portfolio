@@ -97,7 +97,7 @@ Scaling this into a larger product? TypeScript integration is plug‑and‑play.
 
 ## 👨‍💻 About the Developer
 
-**Modern Full‑Stack Developer (MERN)** with **5+ years of experience** and **50+ production projects delivered**. Strong bias toward **clean architecture, performance, and UI/UX that converts**.
+**Modern Full‑Stack Developer (MERN) + AI** with **1+ years of experience** and **10+ production projects delivered**. Strong bias toward **clean architecture, performance, and UI/UX that converts**.
 
 💼 **Open for freelance & full‑time opportunities**
 
@@ -106,8 +106,8 @@ Scaling this into a larger product? TypeScript integration is plug‑and‑play.
 ## 📬 Contact
 
 * GitHub: [@Harshit2539](https://github.com/Harshit2539)
-* Portfolio: *Add deployed link here*
-* Email: *Add professional email here*
+* Portfolio: *https://3d-portfolios.netlify.app/*
+* Email: *tyagiharshit2539@gmail.com*
 
 ---
 
