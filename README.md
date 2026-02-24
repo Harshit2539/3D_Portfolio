@@ -13,7 +13,7 @@ This portfolio is a **production‑grade front end** engineered for speed, story
 
 ---
 
-## 🧠 Tech Stack (No Fluff)
+## 🧠 Tech Stack 
 
 * **React 19** – Modern component architecture
 * **Vite** – Lightning‑fast dev & build pipeline
@@ -38,8 +38,8 @@ This portfolio is a **production‑grade front end** engineered for speed, story
 
 ## 📸 Preview
 
-> Live demo visuals and screenshots go here.
-> *(Drop a deployed URL for maximum impact.)*
+> Live demo visuals :-
+> *https://3d-portfolios.netlify.app/*
 
 ---
 
@@ -117,4 +117,4 @@ MIT — use it, fork it, improve it.
 
 ---
 
-> **This portfolio is not a template. It’s a signal.**
+
