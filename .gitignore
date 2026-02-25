@@ -32,3 +32,20 @@ dist-ssr
 server/node_modules
 server/.env
 
+# Documentation with secrets
+FILE_STRUCTURE.md
+server/README.md
+server/test.js
+CONTACT_SETUP.md
+COMPLETE.md
+DEPLOYMENT_GUIDE.md
+DEPLOY_QUICK.md
+GITHUB_MODELS_UPDATE.md
+AI_FEATURE.md
+AI_QUICK.md
+START_HERE.md
+QUICKSTART.md
+IMPLEMENTATION_SUMMARY.md
+CHECKLIST.md
+README_DOCS.md
+
