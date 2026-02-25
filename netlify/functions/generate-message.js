@@ -13,8 +13,8 @@ export const handler = async (event) => {
       };
     }
 
-    const prompt = `Write a professional contact message for ${name} about ${subject}. Keep it 2-3 sentences, professional and friendly.`;
-
+    // const prompt = `Write a professional contact message from ${name} about ${subject}. Keep it 2-3 sentences, professional and friendly.`;
+    const prompt = `Draft a concise, professional contact message from ${name} regarding ${subject}. Limit to 2–3 sentences, maintain a friendly yet business-appropriate tone, and end with a clear, polite close.`;
     const response = await fetch('https://models.github.ai/inference/chat/completions', {
       method: 'POST',
       headers: {
