@@ -36,7 +36,7 @@ export const handler = async (event) => {
     //   <p><strong>Message:</strong> ${message}</p>
     // `;
 
-    const adminEmailTemplate = (data) => `
+    const adminEmailTemplate =  `
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,19 +60,19 @@ export const handler = async (event) => {
     <div class="content">
       <div class="field">
         <div class="label">👤 Name:</div>
-        <div class="value">${data.name}</div>
+        <div class="value">${name}</div>
       </div>
       <div class="field">
         <div class="label">📧 Email:</div>
-        <div class="value">${data.email}</div>
+        <div class="value">${email}</div>
       </div>
       <div class="field">
         <div class="label">📝 Subject:</div>
-        <div class="value">${data.subject}</div>
+        <div class="value">${subject}</div>
       </div>
       <div class="field">
         <div class="label">💬 Message:</div>
-        <div class="value">${data.message}</div>
+        <div class="value">${message}</div>
       </div>
       <div class="footer">
         <p>Received at: ${new Date().toLocaleString()}</p>
@@ -89,7 +89,7 @@ export const handler = async (event) => {
     //   <p>Thank you for contacting me! I'll get back to you within 24 hours.</p>
     // `;
 
-    const userEmailTemplate = (name) => `
+    const userEmailTemplate = `
 <!DOCTYPE html>
 <html>
 <head>
