@@ -38,8 +38,8 @@ This portfolio is a **production‑grade front end** engineered for speed, story
 
 ## 📸 Preview
 
-> Live demo visuals :-
-> *https://3d-portfolios.netlify.app/*
+> Live demo visuals and screenshots go here.
+> *(Drop a deployed URL for maximum impact.)*
 
 ---
 
@@ -106,8 +106,8 @@ Scaling this into a larger product? TypeScript integration is plug‑and‑play.
 ## 📬 Contact
 
 * GitHub: [@Harshit2539](https://github.com/Harshit2539)
-* Portfolio: *https://3d-portfolios.netlify.app/*
-* Email: *tyagiharshit2539@gmail.com*
+* Portfolio: *Add deployed link here*
+* Email: *Add professional email here*
 
 ---
 

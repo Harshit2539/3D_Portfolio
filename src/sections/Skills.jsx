@@ -434,9 +434,9 @@ export default function Skills() {
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { tech: 'AI/ML', progress: 65 },
-                { tech: 'Web3', progress: 50 },
+                { tech: 'Cloud Architecture', progress: 50 },
                 { tech: 'DevOps', progress: 40 },
-                { tech: 'SEO', progress: 35 }
+                { tech: 'System Design', progress: 55 }
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between text-sm">
@@ -461,7 +461,10 @@ export default function Skills() {
             Interested in how these skills can bring value to your project?
           </p>
           
-          <div className="inline-flex items-center gap-6 px-10 py-5 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group cursor-pointer hover:border-primary/50 transition-all duration-300">
+          <a 
+            href="#contact"
+            className="inline-flex items-center gap-6 px-10 py-5 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group cursor-pointer hover:border-primary/50 transition-all duration-300"
+          >
             <div className="relative">
               <span className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Let's Build Something Amazing
@@ -475,7 +478,7 @@ export default function Skills() {
                 →
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       

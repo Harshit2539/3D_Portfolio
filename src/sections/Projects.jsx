@@ -490,14 +490,24 @@ export default function Projects() {
                   
                   {/* Action buttons */}
                   <div className="flex gap-3">
-                    <button className="relative group/btn">
+                    <a 
+                      href={project.viewLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group/btn"
+                    >
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-0 group-hover/btn:opacity-50 transition-opacity duration-300" />
                       <div className="relative px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-white/10 text-xs font-medium text-white group-hover/btn:border-primary/50 transition-all duration-300">
                         View Demo
                       </div>
-                    </button>
+                    </a>
                     
-                    <button className="relative group/btn">
+                    <a 
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative group/btn"
+                    >
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-0 group-hover/btn:opacity-50 transition-opacity duration-300" />
                       <div className="relative px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 backdrop-blur-sm border border-primary/30 text-xs font-medium text-primary group-hover/btn:from-primary/30 group-hover/btn:to-secondary/30 transition-all duration-300">
                         <span className="flex items-center gap-1">
@@ -505,7 +515,7 @@ export default function Projects() {
                           <span className="text-lg">→</span>
                         </span>
                       </div>
-                    </button>
+                    </a>
                   </div>
                 </div>
                 

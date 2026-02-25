@@ -297,7 +297,7 @@ export default function About() {
                   
                   {/* Tech stack indicators */}
                   <div className="flex gap-2 mt-6">
-                    {[ 'PHP', 'MERN', 'Python', 'AI', 'SQL'].map((tech, i) => (
+                    {['React', 'Node.js', 'PHP', 'Python', 'SQL', 'AI'].map((tech, i) => (
                       <span
                         key={tech}
                         className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary"
@@ -364,10 +364,10 @@ export default function About() {
               
               <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
                 {[
-                  'C', 'Java', 'JavaScript', 'SQL',
-                  'Python', 'PHP', 'Laravel', 'Prompt AI',
-                  'React', 'Node.js', 'MongoDB', 'Express', 
-                  'LLM', 'Model Integration', 'Model Training', 'APIs'
+                  'C', 'Java', 'JavaScript', 'PHP',
+                  'SQL', 'Python', 'React.js', 'Node.js',
+                  'Express.js', 'Laravel', 'MongoDB', 'MySQL',
+                  'FastAPI', 'GitHub', 'Postman', 'Restful APIs'
                 ].map((tech, index) => (
                   <div
                     key={tech}
@@ -405,7 +405,7 @@ export default function About() {
                   <div>
                     <h4 className="text-xl font-bold text-white mb-3">Development Philosophy</h4>
                     <p className="text-gray-300">
-                      I believe in writing <span className="text-primary">clean, maintainable code</span> 
+                      I believe in writing <span className="text-primary">clean, maintainable code </span> 
                       that not only solves problems but also creates delightful user experiences. 
                       Every line of code is an opportunity to build something amazing.
                     </p>
@@ -418,7 +418,10 @@ export default function About() {
 
         {/* Floating CTA */}
         <div className="mt-20 text-center">
-          <div className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group cursor-pointer hover:border-primary/50 transition-all duration-300">
+          <a 
+            href="#contact"
+            className="inline-flex items-center gap-4 px-8 py-4 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group cursor-pointer hover:border-primary/50 transition-all duration-300"
+          >
             <span className="text-lg font-semibold text-white">
               Want to build something incredible together?
             </span>
@@ -428,9 +431,8 @@ export default function About() {
             </div>
             <div className="text-2xl group-hover:translate-x-2 transition-transform duration-300">
               →
-              {/* 💡 */}
             </div>
-          </div>
+          </a>
         </div>
       </div>
 

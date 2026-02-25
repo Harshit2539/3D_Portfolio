@@ -469,18 +469,21 @@ export default function Experience() {
                       {/* Tech Stack Used */}
                       <div className="mt-8 pt-6 border-t border-white/10">
                         <div className="flex flex-wrap gap-2">
-                          {/* Sample tech stack - you can replace with actual data */}
-                          {['React', 'Node.js', 'MongoDB', 'SQL', 'PHP', 'AI-Integration'].map((tech, idx) => (
+                          {i === 0 ? ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python', 'FastAPI'].map((tech, idx) => (
                             <span
                               key={idx}
                               className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-primary"
                             >
                               {tech}
                             </span>
-                          ))}
-                          <span className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-gray-800 to-black border border-white/10 text-gray-400">
-                            + more
-                          </span>
+                          )) : i === 1 ? ['SQL', 'SAP Business One', 'HANA SQL', 'Crystal Reports', 'Power BI'].map((tech, idx) => (
+                            <span
+                              key={idx}
+                              className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-primary"
+                            >
+                              {tech}
+                            </span>
+                          )) : null}
                         </div>
                       </div>
                     </div>
@@ -546,7 +549,10 @@ export default function Experience() {
             
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
+                    
+          <a 
+            href="#contact"
+          >
               <button className="relative px-12 py-5 rounded-2xl bg-gradient-to-r from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/10 group-hover:border-primary/50 transition-all duration-300">
                 <span className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                   Let's Work Together ..
@@ -562,6 +568,7 @@ export default function Experience() {
                   </div>
                 </div>
               </button>
+           </a>
             </div>
           </div>
         </div>

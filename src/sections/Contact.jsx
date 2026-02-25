@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useGsap } from "../hooks/useGsap";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { personalInfo, projects } from "../data/portfolioData";
+import { personalInfo} from "../data/portfolioData";
 import { SplitText } from "../utils/splitText";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,11 +21,12 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  // Get project count for stats
-  const totalProjects = projects.length;
-  const completedProjects = projects.filter(p => p.status === 'completed').length;
-  const liveProjects = projects.filter(p => p.status === 'live').length;
+  // // Get project count for stats
+  // const totalProjects = projects.length;
+  // const completedProjects = projects.filter(p => p.status === 'completed').length;
+  // const liveProjects = projects.filter(p => p.status === 'live').length;
 
   // Create floating contact particles
   useEffect(() => {
@@ -126,7 +127,7 @@ export default function Contact() {
     });
 
     // Input field animations on focus
-    inputRefs.current.forEach((input, index) => {
+    inputRefs.current.forEach((input) => {
       if (!input) return;
       
       input.addEventListener('focus', () => {
@@ -240,9 +241,60 @@ export default function Contact() {
     }
   };
 
+  const handleGenerateMessage = async () => {
+    if (!formData.name || !formData.subject) {
+      alert('Please fill in your name and subject first!');
+      return;
+    }
+
+    setIsGenerating(true);
+
+    try {
+      const response = await fetch('/.netlify/functions/generate-message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          subject: formData.subject
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormData(prev => ({ ...prev, message: data.message }));
+        
+        // Animate the message field
+        const messageInput = inputRefs.current[3];
+        if (messageInput) {
+          const label = messageInput.parentElement.querySelector('.input-label');
+          if (label) {
+            gsap.to(label, {
+              color: '#6366f1',
+              y: -25,
+              fontSize: '14px',
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          }
+        }
+      } else {
+        alert(data.message || 'Failed to generate message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to generate message. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
     
     // Submit button animation
     const submitBtn = document.querySelector('.submit-btn');
@@ -254,52 +306,80 @@ export default function Contact() {
       ease: "power2.inOut"
     });
     
-    // Simulate API call (replace with actual email service)
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
+    try {
+      const response = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
       
-      // Success animation
-      gsap.fromTo('.success-message',
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSubmitting(false);
+        setSubmitStatus('success');
+        
+        // Success animation
+        gsap.fromTo('.success-message',
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }
+        );
+        
+        // Reset form after success
+        setTimeout(() => {
+          setSubmitStatus(null);
+          setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+          });
+          
+          // Reset all input labels
+          inputRefs.current.forEach((input) => {
+            if (input) {
+              const label = input.parentElement.querySelector('.input-label');
+              if (label) {
+                gsap.to(label, {
+                  color: '#9ca3af',
+                  y: 0,
+                  fontSize: '16px',
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
+              }
+              
+              const border = input.parentElement.querySelector('.input-border');
+              if (border) {
+                gsap.to(border, {
+                  scaleX: 0,
+                  duration: 0.3,
+                  ease: "power2.out"
+                });
+              }
+            }
+          });
+        }, 3000);
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setIsSubmitting(false);
+      setSubmitStatus('error');
+      
+      // Error animation
+      gsap.fromTo('.error-message',
         { scale: 0, opacity: 0 },
         { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" }
       );
       
-      // Reset form after success
       setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-        
-        // Reset all input labels
-        inputRefs.current.forEach((input, index) => {
-          if (input) {
-            const label = input.parentElement.querySelector('.input-label');
-            if (label) {
-              gsap.to(label, {
-                color: '#9ca3af',
-                y: 0,
-                fontSize: '16px',
-                duration: 0.3,
-                ease: "power2.out"
-              });
-            }
-            
-            const border = input.parentElement.querySelector('.input-border');
-            if (border) {
-              gsap.to(border, {
-                scaleX: 0,
-                duration: 0.3,
-                ease: "power2.out"
-              });
-            }
-          }
-        });
+        setSubmitStatus(null);
       }, 3000);
-    }, 2000);
+    }
   };
 
   const contactInfo = [
@@ -310,13 +390,13 @@ export default function Contact() {
       color: 'from-blue-500 to-cyan-500',
       action: () => window.open(`mailto:${personalInfo.email}`, '_blank')
     },
-    { 
-      icon: '📱', 
-      label: 'Phone', 
-      value: personalInfo.phone, 
-      color: 'from-purple-500 to-pink-500',
-      action: () => window.open(`tel:${personalInfo.phone}`, '_blank')
-    },
+    // { 
+    //   icon: '📱', 
+    //   label: 'Phone', 
+    //   value: personalInfo.phone, 
+    //   color: 'from-purple-500 to-pink-500',
+    //   action: () => window.open(`tel:${personalInfo.phone}`, '_blank')
+    // },
     { 
       icon: '📍', 
       label: 'Location', 
@@ -403,7 +483,7 @@ export default function Contact() {
             <p className="text-xl text-gray-400">
               Ready to bring your next big idea to life? I've successfully delivered
               <span className="text-primary font-semibold mx-2">10+ projects</span>
-              and I'm excited to collaborate on your next venture
+              and I'm ready to collaborate on your next venture
             </p>
           </div>
         </div>
@@ -503,21 +583,21 @@ export default function Contact() {
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                       {/* {totalProjects} */}
-                      50+
+                      10+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Total</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
                       {/* {completedProjects} */}
-                      40+
+                      10+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Completed</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                       {/* {liveProjects} */}
-                      30+
+                      10+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Live</div>
                   </div>
@@ -539,7 +619,19 @@ export default function Contact() {
                   <div className="text-center p-8">
                     <div className="text-6xl mb-4">✨</div>
                     <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                    <p className="text-gray-300">I'll get back to you within 24 hours.</p>
+                    <p className="text-gray-300">Check your email for confirmation.</p>
+                    <p className="text-gray-400 text-sm mt-2">I'll get back to you within 24 hours.</p>
+                  </div>
+                </div>
+              )}
+              
+              {/* Error message */}
+              {submitStatus === 'error' && (
+                <div className="error-message absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 backdrop-blur-sm rounded-3xl z-10">
+                  <div className="text-center p-8">
+                    <div className="text-6xl mb-4">⚠️</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Oops!</h3>
+                    <p className="text-gray-300">Failed to send message. Please try again.</p>
                   </div>
                 </div>
               )}
@@ -603,9 +695,29 @@ export default function Contact() {
                 
                 {/* Message field */}
                 <div className="relative">
-                  <label className="input-label absolute left-4 top-4 text-gray-400 pointer-events-none transition-all duration-300">
-                    Your Message
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="input-label absolute left-4 top-4 text-gray-400 pointer-events-none transition-all duration-300">
+                      Your Message
+                    </label>
+                    <button
+                      type="button"
+                      onClick={handleGenerateMessage}
+                      disabled={isGenerating || !formData.name || !formData.subject}
+                      className="relative ml-auto mb-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold hover:scale-105 transition-transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Generating...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>✨</span>
+                          <span>Generate with AI</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
                   <textarea
                     ref={el => inputRefs.current[3] = el}
                     name="message"

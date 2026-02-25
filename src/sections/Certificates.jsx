@@ -506,22 +506,29 @@ export default function Certificates() {
                   
                   {/* Action buttons */}
                   <div className="flex gap-3">
-                    <button className="verify-btn relative opacity-0 translate-x-5">
+                    <a 
+                      href={cert.viewcertificate}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="verify-btn relative opacity-0 translate-x-5"
+                    >
                       <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
                       <div className="relative px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500/20 to-amber-500/20 backdrop-blur-sm border border-yellow-500/30 text-xs font-medium text-yellow-500 hover:from-yellow-500/30 hover:to-amber-500/30 transition-all duration-300">
                         Verify Credential
                       </div>
-                    </button>
+                    </a>
                     
-                    <button 
-                      onClick={() => window.open('https://linkedin.com/in/harshtyagi25', '_blank')}
+                    <a 
+                      href={cert.viewcertificate}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="relative group/btn"
                     >
                       <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-0 group-hover/btn:opacity-50 transition-opacity duration-300" />
                       <div className="relative px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-white/10 text-xs font-medium text-white group-hover/btn:border-primary/50 transition-all duration-300">
                         View Certificate
                       </div>
-                    </button>
+                    </a>
                   </div>
                 </div>
                 
@@ -581,10 +588,10 @@ export default function Certificates() {
             {/* Learning progress */}
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { cert: 'AWS Solutions Architect', progress: 75 },
-                { cert: 'LLM Models', progress: 60 },
-                { cert: 'Database Administrator', progress: 45 },
-                { cert: 'React Expert', progress: 55 }
+                { cert: 'AWS Solutions Architect', progress: 70 },
+                { cert: 'Advanced React Patterns', progress: 60 },
+                { cert: 'System Design', progress: 55 },
+                { cert: 'LLM Integration', progress: 65 }
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between text-sm">

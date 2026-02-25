@@ -63,7 +63,7 @@ export default function Hero() {
         {/* Main title with holographic effect */}
         <h1 
           ref={titleRef}
-          className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl font-bold mb-2 sm:mb-4 md:mb-6 relative"
+          className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 sm:mb-4 md:mb-6 relative"
           style={{
             '--glow-x': '0px',
             '--glow-y': '0px',
@@ -83,7 +83,7 @@ export default function Hero() {
             
             {/* Main text */}
             <span className="relative bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-              Full Stack
+              Software Development Engineer
             </span>
             
             {/* Shine effect */}
@@ -94,46 +94,28 @@ export default function Hero() {
           
           <div className="relative inline-block mt-4">
             <span className="relative bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              MERN Engineer
+              Full Stack (MERN) | Applied AI
             </span>
-            
-            {/* Floating tags */}
-            <div className="absolute -top-6 -right-6 flex space-x-2">
-              {['⚛️', '🔥', '🚀'].map((emoji, i) => (
-                <span
-                  key={i}
-                  className="text-2xl animate-bounce"
-                  style={{ animationDelay: `${i * 0.3}s` }}
-                >
-                  {emoji}
-                </span>
-              ))}
-            </div>
           </div>
         </h1>
 
         {/* Subtitle with advanced typography */}
         <p 
           ref={subtitleRef}
-          className="hero-subtitle mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl max-w-3xl mx-auto px-4 relative"
+          className="hero-subtitle mt-2 sm:mt-4 md:mt-6 lg:mt-8 text-sm sm:text-base md:text-lg lg:text-xl max-w-4xl mx-auto px-4 relative"
           style={{
             opacity: 1,
             visibility: 'visible',
             display: 'block'
           }}
         >
-          <span className="relative">
-            I deliver 
-            <span className="inline-block mx-2 px-3 py-1 rounded-lg bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold">
-                scalable
-              </span>
-            </span>
-            software systems that handle  
-            <span className="hero-highlight"> real-world traffic, </span>
-           
-            <span className="hero-highlight"> improve performance, and </span>
-            drive measurable business outcomes.
+          <span className="relative text-gray-300 leading-relaxed">
+            I build 
+            <span className="hero-highlight"> production-grade SaaS applications</span>
+            {' '}and{' '}
+            <span className="hero-highlight">AI-enabled systems</span>,
+            working across frontend, backend, and Python-based AI services
+            to solve real-world engineering problems.
           </span>
         </p>
 
