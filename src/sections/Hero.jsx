@@ -32,7 +32,7 @@ export default function Hero() {
     <section 
       id="hero"
       ref={heroRef}
-      className="relative h-screen overflow-hidden flex items-center justify-center"
+      className="relative min-h-screen overflow-hidden flex items-center justify-center pt-32 lg:pt-0"
       style={{
         background: 'radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(20, 20, 40, 0.8) 40%, rgba(10, 10, 20, 1) 100%)'
       }}

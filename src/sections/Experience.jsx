@@ -297,16 +297,16 @@ export default function Experience() {
         <div className="absolute inset-0" style={{
           backgroundImage: `linear-gradient(90deg, transparent 95%, rgba(99, 102, 241, 0.3) 100%),
                            linear-gradient(0deg, transparent 95%, rgba(99, 102, 241, 0.3) 100%)`,
-          backgroundSize: '50px 50px',
+          backgroundSize: '60px 60px',
           backgroundPosition: 'center center'
         }} />
       </div>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20 relative">
+        <div className="text-center mb-20 relative pt-16 md:pt-0">
           {/* Decorative orb */}
-          <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+          <div className="absolute -top-10 md:-top-10 top-0 left-1/2 transform -translate-x-1/2">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-primary to-secondary rounded-full blur-xl opacity-30 animate-pulse" />
               <div className="relative w-16 h-16 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
