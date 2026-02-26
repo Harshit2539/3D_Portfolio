@@ -239,7 +239,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column - Summary */}
           <div className="space-y-8">
             {/* Summary with animated text */}
@@ -315,7 +315,7 @@ export default function About() {
           {/* Right Column - Stats & Tech Stack */}
           <div className="space-y-8">
             {/* Key Stats Cards */}
-            <div className="about-cards-container grid grid-cols-2 gap-6">
+            <div className="about-cards-container grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
               {[
                 { value: '1+', label: 'Years Experience', icon: '⏳', color: 'from-blue-500 to-cyan-500' },
                 { value: '10+', label: 'Projects Delivered', icon: '🚀', color: 'from-purple-500 to-pink-500' },
@@ -362,7 +362,7 @@ export default function About() {
                 <div className="w-2 h-2 bg-primary rounded-full animate-ping" />
               </h3>
               
-              <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                 {[
                   'C', 'Java', 'JavaScript', 'PHP',
                   'SQL', 'Python', 'React.js', 'Node.js',

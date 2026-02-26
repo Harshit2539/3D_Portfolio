@@ -9,6 +9,12 @@ export default function Footer() {
       { name: 'Certificates', href: '#certificates' },
       { name: 'Resume', href: '#resume' }
     ],
+    services: [
+      { name: 'Website Development', href: '#contact' },
+      { name: 'Backend Development', href: '#contact' },
+      { name: 'Full Stack Development', href: '#contact' },
+      { name: 'Deployment & Hosting', href: '#contact' }
+    ],
     resources: [
       { name: 'GitHub', href: personalInfo.github },
       { name: 'LinkedIn', href: personalInfo.linkedin },
@@ -25,9 +31,9 @@ export default function Footer() {
     <footer className="relative bg-black/50 backdrop-blur-sm border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 mb-8">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div className="col-span-2 md:col-span-1">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-3">
               {personalInfo.name}
             </h3>
@@ -41,6 +47,19 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Portfolio</h4>
             <ul className="space-y-2">
               {links.portfolio.map(link => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-gray-400 hover:text-primary transition-colors text-sm">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <ul className="space-y-2">
+              {links.services.map(link => (
                 <li key={link.name}>
                   <a href={link.href} className="text-gray-400 hover:text-primary transition-colors text-sm">
                     {link.name}

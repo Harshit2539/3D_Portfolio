@@ -127,7 +127,7 @@ export default function Resume() {
           
           <iframe
             src={resumePath}
-            className="w-full h-[800px] md:h-[1000px]"
+            className="w-full h-[500px] sm:h-[600px] md:h-[800px] lg:h-[1000px]"
             title="Resume PDF Viewer"
             onLoad={() => setIsLoading(false)}
           />

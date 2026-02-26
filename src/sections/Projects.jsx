@@ -381,12 +381,13 @@ export default function Projects() {
               className="relative group cursor-pointer"
             >
               {/* Background glow effect */}
-              <div className="project-glow absolute -inset-0.5 bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30 rounded-3xl blur-xl opacity-30 transition-opacity duration-500" />
+              <div className="project-glow absolute -inset-0.5 bg-gradient-to-r from-primary/30 via-secondary/30 to-accent/30 rounded-3xl blur-xl opacity-30 transition-opacity duration-500 -z-10" />
+              
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 rounded-3xl p-px bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
               
               {/* Main project card */}
-              <div className="relative p-8 rounded-3xl bg-gradient-to-br from-gray-900/70 to-black/70 backdrop-blur-sm border border-white/10 overflow-hidden">
-                {/* Animated gradient border */}
-                <div className="absolute inset-0 rounded-3xl p-px bg-gradient-to-r from-primary via-secondary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-gray-900/70 to-black/70 backdrop-blur-sm border border-white/10 z-10">
                 
                 {/* Project header */}
                 <div className="relative mb-6">
@@ -470,9 +471,9 @@ export default function Projects() {
                 </div>
                 
                 {/* Project footer with links */}
-                <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-white/10">
                   {/* Impact metrics */}
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4">
                     {[
                       { icon: '👥', value: '5K+', label: 'Users' },
                       { icon: '⚡', value: '96%', label: 'Uptime' },
@@ -489,7 +490,7 @@ export default function Projects() {
                   </div>
                   
                   {/* Action buttons */}
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-3">
                     <a 
                       href={project.viewLink}
                       target="_blank"
