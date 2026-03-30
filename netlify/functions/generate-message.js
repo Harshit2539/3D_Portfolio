@@ -42,7 +42,8 @@ Keep it under 150 words and make it sound natural and professional.`;
     });
 
     if (!response.ok) {
-      throw new Error('AI request failed');
+      const errText = await response.text();
+      throw new Error(`AI request failed: ${response.status} - ${errText}`);
     }
 
     const data = await response.json();
@@ -53,9 +54,10 @@ Keep it under 150 words and make it sound natural and professional.`;
       body: JSON.stringify({ success: true, message })
     };
   } catch (error) {
+    console.error('Generate message error:', error.message);
     return {
       statusCode: 500,
-      body: JSON.stringify({ success: false, message: 'Failed to generate' })
+      body: JSON.stringify({ success: false, message: 'Failed to generate', error: error.message })
     };
   }
 };

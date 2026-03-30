@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
+import https from 'https';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -188,39 +189,58 @@ Generate a concise, professional message (2-3 sentences) that:
 
 Keep it under 150 words and make it sound natural and professional.`;
 
-    const response = await fetch('https://models.github.ai/inference/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
-      },
-      body: JSON.stringify({
+    const message = await new Promise((resolve, reject) => {
+      const payload = JSON.stringify({
         model: 'openai/gpt-4.1-mini',
         temperature: 0.7,
         messages: [
           { role: 'system', content: 'You are a professional message writer for portfolio contact forms.' },
           { role: 'user', content: prompt }
         ]
-      })
+      });
+
+      const options = {
+        hostname: 'models.github.ai',
+        path: '/inference/chat/completions',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+          'Content-Length': Buffer.byteLength(payload)
+        },
+        timeout: 15000
+      };
+
+      const req = https.request(options, (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          if (res.statusCode !== 200) {
+            return reject(new Error(`AI request failed: ${res.statusCode} - ${data}`));
+          }
+          try {
+            const parsed = JSON.parse(data);
+            resolve(parsed.choices[0].message.content.trim());
+          } catch (e) {
+            reject(new Error('Failed to parse AI response'));
+          }
+        });
+      });
+
+      req.on('timeout', () => { req.destroy(); reject(new Error('Request timed out')); });
+      req.on('error', reject);
+      req.write(payload);
+      req.end();
     });
 
-    if (!response.ok) {
-      throw new Error('AI request failed');
-    }
-
-    const data = await response.json();
-    const message = data.choices[0].message.content.trim();
-
-    res.json({ 
-      success: true, 
-      message
-    });
+    res.json({ success: true, message });
 
   } catch (error) {
-    console.error('AI Generation error:', error);
+    console.error('AI Generation error:', error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Failed to generate message. Please try again.' 
+      message: error.message.includes('timed out') ? 'Request timed out. Please try again.' : 'Failed to generate message. Please try again.',
+      error: error.message
     });
   }
 });
