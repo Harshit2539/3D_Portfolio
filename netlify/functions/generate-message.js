@@ -20,9 +20,6 @@ export const handler = async (event) => {
       };
     }
 
-    console.log('TOKEN PREFIX:', process.env.GITHUB_TOKEN.substring(0, 8));
-    console.log('TOKEN LENGTH:', process.env.GITHUB_TOKEN.length);
-
     // const prompt = `Write a professional contact message from ${name} about ${subject}. Keep it 2-3 sentences, professional and friendly.`;
    const prompt = `Write a professional and friendly contact message for a portfolio website.
 The sender's name is: ${name}
