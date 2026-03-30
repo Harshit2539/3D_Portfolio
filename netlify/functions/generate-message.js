@@ -13,6 +13,13 @@ export const handler = async (event) => {
       };
     }
 
+    if (!process.env.GITHUB_TOKEN) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ success: false, message: 'GITHUB_TOKEN not configured on server' })
+      };
+    }
+
     // const prompt = `Write a professional contact message from ${name} about ${subject}. Keep it 2-3 sentences, professional and friendly.`;
    const prompt = `Write a professional and friendly contact message for a portfolio website.
 The sender's name is: ${name}
