@@ -136,10 +136,10 @@ export default function Resume() {
         {/* Quick Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
           {[
-            { label: 'Experience', value: '1+ Years', color: 'from-blue-500 to-cyan-500', icon: '💼' },
-            { label: 'Projects', value: '10+', color: 'from-purple-500 to-pink-500', icon: '🚀' },
-            { label: 'Technologies', value: '15+', color: 'from-green-500 to-emerald-500', icon: '⚡' },
-            { label: 'Certifications', value: '4+', color: 'from-orange-500 to-red-500', icon: '🏆' }
+            { label: 'Experience', value: '2+ Years', color: 'from-blue-500 to-cyan-500', icon: '💼' },
+            { label: 'Projects', value: '16+', color: 'from-purple-500 to-pink-500', icon: '🚀' },
+            { label: 'Technologies', value: '25+', color: 'from-green-500 to-emerald-500', icon: '⚡' },
+            { label: 'Certifications', value: '8+', color: 'from-orange-500 to-red-500', icon: '🏆' }
           ].map((stat, index) => (
             <div key={index} className="relative group cursor-pointer">
               {/* Animated background glow */}

@@ -543,7 +543,7 @@ export default function Certificates() {
         {/* Certification Stats */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { value: certificates.length, label: 'Total Certifications', icon: '📜', color: 'from-yellow-500 to-amber-500' },
+            { value: '8+', label: 'Total Certifications', icon: '📜', color: 'from-yellow-500 to-amber-500' },
             { value: '100%', label: 'Verified Credentials', icon: '✅', color: 'from-green-500 to-emerald-500' },
             { value: '∞', label: 'Learning Commitment', icon: '🎯', color: 'from-blue-500 to-cyan-500' },
             { value: '50+', label: 'Skills Mastered', icon: '💡', color: 'from-purple-500 to-pink-500' }

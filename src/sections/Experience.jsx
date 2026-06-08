@@ -469,14 +469,14 @@ export default function Experience() {
                       {/* Tech Stack Used */}
                       <div className="mt-8 pt-6 border-t border-white/10">
                         <div className="flex flex-wrap gap-2">
-                          {i === 0 ? ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python', 'FastAPI'].map((tech, idx) => (
+                          {i === 0 ? ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python', 'FastAPI', 'AI', 'SQL', 'MongoDB', 'Docker'].map((tech, idx) => (
                             <span
                               key={idx}
                               className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-primary"
                             >
                               {tech}
                             </span>
-                          )) : i === 1 ? ['SQL', 'SAP Business One', 'HANA SQL', 'Crystal Reports', 'Power BI'].map((tech, idx) => (
+                          )) : i === 1 ? ['SQL', 'PostgreSQL', 'SAP Business One', 'HANA SQL', 'Crystal Reports', 'Power BI'].map((tech, idx) => (
                             <span
                               key={idx}
                               className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/30 text-primary"
@@ -516,7 +516,8 @@ export default function Experience() {
               <div className="text-center">
                 <div className="text-4xl mb-4">🚀</div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  {experience.length}+
+                  {/* {experience.length}+ */}
+                  4+
                 </div>
                 <div className="text-gray-400 mt-2">Professional Roles</div>
               </div>
@@ -524,7 +525,7 @@ export default function Experience() {
               <div className="text-center">
                 <div className="text-4xl mb-4">💡</div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
-                  10+
+                  16+
                 </div>
                 <div className="text-gray-400 mt-2">Projects Delivered</div>
               </div>
@@ -532,7 +533,7 @@ export default function Experience() {
               <div className="text-center">
                 <div className="text-4xl mb-4">⭐</div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-yellow-500 to-amber-500 bg-clip-text text-transparent">
-                  100%
+                  98.9%
                 </div>
                 <div className="text-gray-400 mt-2">Success Rate</div>
               </div>

@@ -296,8 +296,8 @@ export default function About() {
                   </p>
                   
                   {/* Tech stack indicators */}
-                  <div className="flex gap-2 mt-6">
-                    {['React', 'Node.js', 'PHP', 'Python', 'SQL', 'AI'].map((tech, i) => (
+                  <div className="flex gap-1 mt-6">
+                    {['MongoDb', 'Express', 'React', 'Node.js', 'PHP', 'Python', 'SQL', 'AI'].map((tech, i) => (
                       <span
                         key={tech}
                         className="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 text-primary"
@@ -317,9 +317,9 @@ export default function About() {
             {/* Key Stats Cards */}
             <div className="about-cards-container grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
               {[
-                { value: '1+', label: 'Years Experience', icon: '⏳', color: 'from-blue-500 to-cyan-500' },
-                { value: '10+', label: 'Projects Delivered', icon: '🚀', color: 'from-purple-500 to-pink-500' },
-                { value: '100%', label: 'Client Satisfaction', icon: '⭐', color: 'from-yellow-500 to-orange-500' },
+                { value: '2+', label: 'Years Experience', icon: '⏳', color: 'from-blue-500 to-cyan-500' },
+                { value: '16+', label: 'Projects Delivered', icon: '🚀', color: 'from-purple-500 to-pink-500' },
+                { value: '98.9%', label: 'Client Satisfaction', icon: '⭐', color: 'from-yellow-500 to-orange-500' },
                 { value: '∞', label: 'Passion for Code', icon: '❤️', color: 'from-red-500 to-pink-500' }
               ].map((stat, index) => (
                 <div

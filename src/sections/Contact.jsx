@@ -482,7 +482,7 @@ export default function Contact() {
           <div className="max-w-3xl mx-auto">
             <p className="text-xl text-gray-400">
               Ready to bring your next big idea to life? I've successfully delivered
-              <span className="text-primary font-semibold mx-2">10+ projects</span>
+              <span className="text-primary font-semibold mx-2">16+ projects</span>
               and I'm ready to collaborate on your next venture
             </p>
           </div>
@@ -583,21 +583,21 @@ export default function Contact() {
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                       {/* {totalProjects} */}
-                      10+
+                      25+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Total</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
                       {/* {completedProjects} */}
-                      10+
+                      19+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Completed</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                       {/* {liveProjects} */}
-                      10+
+                      16+
                     </div>
                     <div className="text-sm text-gray-400 mt-1">Live</div>
                   </div>

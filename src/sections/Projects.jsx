@@ -531,8 +531,8 @@ export default function Projects() {
         {/* Projects Stats */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
-            { value: projects.length, label: 'Total Projects', icon: '📊', color: 'from-blue-500 to-cyan-500' },
-            { value: '50K+', label: 'Lines of Code', icon: '💻', color: 'from-purple-500 to-pink-500' },
+            { value: '16+', label: 'Total Projects', icon: '📊', color: 'from-blue-500 to-cyan-500' },
+            { value: '100K+', label: 'Lines of Code', icon: '💻', color: 'from-purple-500 to-pink-500' },
             { value: '25+', label: 'Technologies Used', icon: '🔧', color: 'from-green-500 to-emerald-500' },
             { value: '∞', label: 'Passion Level', icon: '🔥', color: 'from-orange-500 to-red-500' }
           ].map((stat, index) => (

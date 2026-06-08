@@ -149,9 +149,9 @@ export default function Hero() {
         {/* Stats */}
         <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-12 xl:mt-16 grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8 max-w-2xl mx-auto hero-stats" style={{ opacity: 1, visibility: 'visible' }}>
           {[
-            { value: '10+', label: 'Projects', emoji: '🚀' },
-            { value: '1+', label: 'Years Exp', emoji: '💼' },
-            { value: '100%', label: 'Satisfaction', emoji: '⭐' }
+            { value: '16+', label: 'Projects', emoji: '🚀' },
+            { value: '2+', label: 'Years Exp', emoji: '💼' },
+            { value: '98.9%', label: 'Satisfaction', emoji: '⭐' }
           ].map((stat, i) => (
             <div
               key={i}

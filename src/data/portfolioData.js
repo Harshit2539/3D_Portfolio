@@ -21,7 +21,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/harshtyagi25",
   github: "https://github.com/Harshit2539",
   summary:
-    "Software Development Engineer with approximately one year of hands-on experience contributing to production-grade SaaS platforms and AI-driven systems. Experienced in full-stack development using MERN and Laravel, and in integrating Python-based AI services including Computer Vision and LLM pipelines into scalable backend architectures.",
+    "Software Development Engineer with approximately two year of hands-on experience contributing to production-grade SaaS platforms and AI-driven systems. Experienced in full-stack development using MERN and Laravel, and in integrating Python-based AI services including Computer Vision and LLM pipelines into scalable backend architectures.",
 };
 
 // export const experience = [
@@ -259,14 +259,18 @@ export const skills = {
     "VS Code",
     "Antigravity",
     "Curser",
-    "N8N"
+    "N8N",
+    "AWS",
+    "Docker"
   ],
   concepts: [
     "Restful APIs",
     "JWT Authentication",
     "AI / ML Fundamentals",
     "Prompt Engineering",
-    "Model Training & Integration",
+    "Generative AI",
+    "Agentic AI (N8N)",
+    "Model Training & Integration", 
     "Database Normalization",
   ],
 };
